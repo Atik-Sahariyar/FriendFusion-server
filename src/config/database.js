@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+// const uri = "mongodb+srv://<username>:<password>@cluster0.m4j1j7e.mongodb.net/?retryWrites=true&w=majority";
 
 const getConnectionString = () => {
     let connectionURI;
@@ -12,8 +13,6 @@ const getConnectionString = () => {
     }
     return connectionURI;
 }
-
-
 
 const connectToDB = async() => {
     console.log('connecting to database ......');

@@ -4,16 +4,31 @@ const app = express();
 const applyMiddleware = require('./middleware/applyMiddleware')
 const globalErrorHandler = require("./utils/globalErrorHandler");
 const connectToDB = require("./config/database");
-const jwtRoute = require("./routes/authentication/jwtRoute");
 const port = process.env.PORT || 5000;
+
+// require all routes
+const jwtRoute = require("./routes/authentication/jwtRoute");
+const creatNewUserRoute = require("./routes/users/creatNewUserRoute");
+const getAdminRoute = require("./routes/users/getAdminRoute");
+const addPostRoute = require("./routes/posts/addPostRoute");
+const getUsersRoute = require("./routes/users/getUsersRoute");
+const getUserPostsRoute = require("./routes/posts/getUserPostsRoute");
 
 
 //middileare
 applyMiddleware(app);
 // -----------------------------------
-// authentication route
+// authentication routes
 app.use(jwtRoute);
 
+// user related api routes
+app.use(creatNewUserRoute);
+app.use(getAdminRoute);
+app.use(getUsersRoute);
+
+// posts related api routes
+app.use(addPostRoute);
+app.use(getUserPostsRoute);
 
 // ------------------------------------
 app.get('/', (req, res) => {

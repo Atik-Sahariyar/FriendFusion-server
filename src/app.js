@@ -12,7 +12,18 @@ const creatNewUserRoute = require("./routes/users/creatNewUserRoute");
 const getAdminRoute = require("./routes/users/getAdminRoute");
 const addPostRoute = require("./routes/posts/addPostRoute");
 const getUsersRoute = require("./routes/users/getUsersRoute");
-const getUserPostsRoute = require("./routes/posts/getUserPostsRoute");
+const getPostCountRoute = require("./routes/posts/getPostCountRoute");
+const getMyPostsRoute = require("./routes/posts/getMyPostsRoute");
+const deletePostRoute = require("./routes/posts/deletePostRoute");
+const getAllPostsRoute = require("./routes/posts/getAllPostsRoute");
+const updatePostRoute = require("./routes/posts/updatePostRoute");
+const getPopularPostsRoute = require("./routes/posts/getPopularPostsRoute");
+const getOnePostRoute = require("./routes/posts/getOnePostRoute");
+const postCommentRoute = require("./routes/comments/postComment");
+const getCommentsRoute = require("./routes/comments/getCommentRooute");
+const makeAdminRoute = require("./routes/users/makeAdminRoute");
+const postAnnouncementsRoute = require("./routes/announcments/postAnnouncementsRoute");
+const getAnnnouncementsRoute = require("./routes/announcments/getAnnouncementsRoute");
 
 
 //middileare
@@ -25,10 +36,26 @@ app.use(jwtRoute);
 app.use(creatNewUserRoute);
 app.use(getAdminRoute);
 app.use(getUsersRoute);
+app.use(makeAdminRoute);
+
+// announcements related api routes
+app.use(postAnnouncementsRoute);
+app.use(getAnnnouncementsRoute);
 
 // posts related api routes
 app.use(addPostRoute);
-app.use(getUserPostsRoute);
+app.use(getPostCountRoute);
+app.use(getMyPostsRoute);
+app.use(deletePostRoute);
+app.use(getAllPostsRoute);
+app.use(updatePostRoute);
+app.use(getPopularPostsRoute);
+app.use(getOnePostRoute);
+
+// comments related api routes
+app.use(postCommentRoute);
+app.use(getCommentsRoute);
+
 
 // ------------------------------------
 app.get('/', (req, res) => {

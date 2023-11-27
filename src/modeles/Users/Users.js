@@ -14,9 +14,15 @@ const UsersSchema = new Schema({
     },
     role: {
         type: String
+    }, 
+    membership: {
+       type: String
     }
+    
 });
 
 const Users = model('Users', UsersSchema);
 
 module.exports = Users;
+
+

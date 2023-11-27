@@ -1,22 +1,15 @@
 const { Schema, model} = require('mongoose');
 
 const PostsSchema = new Schema({
-    authorInfo : {
-        type: Object,
-        name: {
-            type: String,
-            required: true
-        },
-        email:{
-            type: String,
-            required: true
-        },
-        photoURL:{
-            type: String
-        },
-        postsCount:{
-            type: Number
-        }
+    authorName : {
+        type: String,
+    },
+    authorEmail : {
+        type: String,
+        required: true,
+    },
+    authorImg : {
+        type: String,
     },
     postTitle: {
         type: String
@@ -36,16 +29,12 @@ const PostsSchema = new Schema({
     upVote: {
         type: Number
     },
-    dounVote: {
+    downVote: {
         type: Number
     },
     share: {
         type: Number
-    },
-    comments: {
-        type: Array
     }
-
 });
 
 const Posts = model('Posts', PostsSchema);

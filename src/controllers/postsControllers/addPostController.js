@@ -6,7 +6,6 @@ const addPostController = async(req, res) => {
         const post = req.body;
         const newPost  = new Posts(post);
         const result = await newPost.save();
-        console.log(result);
         res.status(200).json(result);
       } catch (error) {
         console.error('Error  post  data:', error);
@@ -15,3 +14,5 @@ const addPostController = async(req, res) => {
 };
 
 module.exports = addPostController;
+
+

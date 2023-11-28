@@ -20,7 +20,10 @@ const CommentsSchema = new Schema({
     },
     commentTime: {
         type: String
-    }
+    },
+    feedback:{
+    type: String
+    } 
 
 });
 

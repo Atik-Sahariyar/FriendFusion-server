@@ -12,11 +12,14 @@ const UsersSchema = new Schema({
     photo:{
         type: String
     },
+    password:{
+        type: String
+    },
     role: {
         type: String
     }, 
     membership: {
-       type: String
+       type: Boolean
     }
     
 });

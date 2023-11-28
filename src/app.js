@@ -6,6 +6,7 @@ const globalErrorHandler = require("./utils/globalErrorHandler");
 const connectToDB = require("./config/database");
 const port = process.env.PORT || 5000;
 
+
 // require all routes
 const jwtRoute = require("./routes/authentication/jwtRoute");
 const creatNewUserRoute = require("./routes/users/creatNewUserRoute");
@@ -24,6 +25,14 @@ const getCommentsRoute = require("./routes/comments/getCommentRooute");
 const makeAdminRoute = require("./routes/users/makeAdminRoute");
 const postAnnouncementsRoute = require("./routes/announcments/postAnnouncementsRoute");
 const getAnnnouncementsRoute = require("./routes/announcments/getAnnouncementsRoute");
+const updateCommentRoute = require("./routes/comments/updateComment");
+const getReportedCommentsRoute = require("./routes/comments/getReportedCommentsRoute");
+const paymentSaveRoute = require("./routes/paymentRoutes/paymentSaveRoute");
+const createPaymentIntentRoute = require("./routes/paymentRoutes/createPaymentIntent");
+const updateUserRoute = require("./routes/users/updateUserRoute");
+const getMemberRoute = require("./routes/users/getMemberUser");
+
+
 
 
 //middileare
@@ -37,6 +46,9 @@ app.use(creatNewUserRoute);
 app.use(getAdminRoute);
 app.use(getUsersRoute);
 app.use(makeAdminRoute);
+app.use(updateUserRoute);
+app.use(getMemberRoute);
+
 
 // announcements related api routes
 app.use(postAnnouncementsRoute);
@@ -55,9 +67,17 @@ app.use(getOnePostRoute);
 // comments related api routes
 app.use(postCommentRoute);
 app.use(getCommentsRoute);
+app.use(updateCommentRoute);
+app.use(getReportedCommentsRoute);
+
+// payment related api routes
+app.use(createPaymentIntentRoute)
+app.use(paymentSaveRoute);
 
 
 // ------------------------------------
+
+
 app.get('/', (req, res) => {
     res.send('FriendFusion server is running');
 });
@@ -73,11 +93,13 @@ app.all("*", (req, res, next) => {
 // error handling middleware
 app.use(globalErrorHandler);
 
-const main = async () => {
-    await connectToDB();
-    app.listen(port, () => {
-        console.log(`FriendFusion Server is running on port : ${port}`);
-    });
+// const main = async () => {
+//     await connectToDB();
+//     app.listen(port, () => {
+//         console.log(`FriendFusion Server is running on port : ${port}`);
+//     });
 
-}
-main();
+// }
+// main();
+
+module.exports = app;

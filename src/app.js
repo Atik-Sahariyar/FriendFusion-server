@@ -31,6 +31,7 @@ const paymentSaveRoute = require("./routes/paymentRoutes/paymentSaveRoute");
 const createPaymentIntentRoute = require("./routes/paymentRoutes/createPaymentIntent");
 const updateUserRoute = require("./routes/users/updateUserRoute");
 const getMemberRoute = require("./routes/users/getMemberUser");
+const adminStatsRoute = require("./routes/admin/adminStats");
 
 
 
@@ -74,7 +75,8 @@ app.use(getReportedCommentsRoute);
 app.use(createPaymentIntentRoute)
 app.use(paymentSaveRoute);
 
-
+// admin related api routes
+app.use(adminStatsRoute)
 // ------------------------------------
 
 

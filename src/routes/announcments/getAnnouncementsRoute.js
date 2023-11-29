@@ -2,7 +2,7 @@ const express = require('express');
 const Announcements = require('../../modeles/Announcements/Announcements');
 const getAnnnouncementsRoute = express.Router();
 
-getAnnnouncementsRoute.get('/announcemnets', async(req, res) => {
+getAnnnouncementsRoute.get('/announcements', async(req, res) => {
     try{
        const result = await Announcements.find();
        res.send(result);

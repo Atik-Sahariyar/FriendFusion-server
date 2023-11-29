@@ -7,6 +7,7 @@ postAnnouncementsRoute.post('/announcements', async (req, res) => {
         const announcement = req.body;
         const newannouncement  = new Announcements(announcement);
         const result = await newannouncement.save();
+   
         res.status(200).json(result);
     } catch (error) {
         console.error('Error  post announcement data:', error);

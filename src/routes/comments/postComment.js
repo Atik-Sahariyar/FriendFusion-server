@@ -1,8 +1,9 @@
 const express = require('express');
 const Comments = require('../../modeles/Posts/Comments');
+const verifyToken = require('../../middleware/customMiddleare/verifyToken');
 const postCommentRoute = express.Router();
 
-postCommentRoute.post('/comments', async(req, res) => {
+postCommentRoute.post('/comments', verifyToken, async(req, res) => {
     try{
         const comment = req.body;
         const newcomment  = new Comments(comment);

@@ -14,7 +14,6 @@ const getMyPostsController = async(req, res) => {
         ];
        
         const result = await Posts.aggregate(aggregationPipline);
-       
         res.send(result);
 
     } catch (error) {
@@ -25,3 +24,4 @@ const getMyPostsController = async(req, res) => {
 
 
 module.exports = getMyPostsController;
+

@@ -1,8 +1,10 @@
 const express = require('express');
 const Announcements = require('../../modeles/Announcements/Announcements');
+const verifyToken = require('../../middleware/customMiddleare/verifyToken');
+const verifyAdmin = require('../../middleware/customMiddleare/verifyAdmin');
 const postAnnouncementsRoute = express.Router();
 
-postAnnouncementsRoute.post('/announcements', async (req, res) => {
+postAnnouncementsRoute.post('/announcements', verifyToken, verifyAdmin, async (req, res) => {
     try {
         const announcement = req.body;
         const newannouncement  = new Announcements(announcement);

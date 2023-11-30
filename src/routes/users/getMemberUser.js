@@ -1,8 +1,9 @@
 const express = require('express');
 const Users = require('../../modeles/Users/Users');
+const verifyToken = require('../../middleware/customMiddleare/verifyToken');
 const getMemberRoute = express.Router();
 
-getMemberRoute.get('/users/member/:email', async(req, res) => {
+getMemberRoute.get('/users/member/:email', verifyToken, async(req, res) => {
     try{
       const email  =  req.params.email;
       const query = { email: email};

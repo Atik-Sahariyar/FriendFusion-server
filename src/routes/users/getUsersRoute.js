@@ -1,9 +1,11 @@
 const express = require('express');
 const Users = require('../../modeles/Users/Users');
+const verifyToken = require('../../middleware/customMiddleare/verifyToken');
+const verifyAdmin = require('../../middleware/customMiddleare/verifyAdmin');
 const getUsersRoute = express.Router();
 
 
-getUsersRoute.get('/users', async(req, res) => {
+getUsersRoute.get('/users', verifyToken, verifyAdmin, async(req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
 

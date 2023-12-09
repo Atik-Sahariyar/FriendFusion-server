@@ -3,8 +3,6 @@ require("dotenv").config();
 const app = express();
 const applyMiddleware = require('./middleware/applyMiddleware')
 const globalErrorHandler = require("./utils/globalErrorHandler");
-const connectToDB = require("./config/database");
-const port = process.env.PORT || 5000;
 
 
 // require all routes
